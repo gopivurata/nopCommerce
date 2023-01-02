@@ -17,8 +17,8 @@ pipeline {
         stage ('eks cluster') {
             agent {label 'terraform'}
             steps {
-                sh 'git clone https://github.com/hashicorp/learn-terraform-provision-eks-cluster'
-                sh 'cd learn-terraform-provision-eks-cluster'
+                git branch: 'main', 
+                    url: 'https://github.com/gopivurata/learn-terraform-provision-eks-cluster.git'
                 sh 'terraform init'
                 sh 'terraform apply -auto-approve'
                 sh 'aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)'
