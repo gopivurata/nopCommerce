@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-nopcommerce
+spec:
+  minReadySeconds: 10
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nop-commerce
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: 
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: nop-commerce
+      name: nop-commerce-pod
+    spec:
+      containers:
+        - image: gopivurata/nopcommerce:2.0
+          name: nop-commerce-container
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            exec:
+              command:
+                - touch
+                - sample.py
