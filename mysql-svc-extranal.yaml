@@ -4,7 +4,8 @@ kind: Service
 metadata:
   name: my-mysql-svc
 spec:
-  type: ClusterIP
+  type: ExternalName
+  externalName: mysql.nop.com
   selector:
     app: mysql
   ports:

@@ -23,6 +23,9 @@ LABEL app="nopCommerce"
 LABEL owner="gopi"
 COPY --from=unzip /Nop /Nop
 WORKDIR /Nop
+RUN mkdir /Nop/bin && mkdir /Nop/logs
 EXPOSE 80
+RUN chmod 777 /Nop/bin
+RUN chmod 777 /Nop/logs
 CMD ["dotnet","/Nop/Nop.Web.dll"]
-
+~                                  

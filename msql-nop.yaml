@@ -21,12 +21,12 @@ spec:
           value: gopivurata
         - name: MYSQL_PASSWORD
           value: gopivurata
-      volumeMounts:
-        - mountPath: /var/lib/mysql
-          name: mysql
-  volumes:
-    - persistentVolumeClaim:
-        claimName: my-nop-pvc
-        readOnly: false
-      name: mysql
+     # volumeMounts:
+      #  - mountPath: /var/lib/mysql
+      #    name: mysql
+  #volumes:
+  #  - persistentVolumeClaim:
+  #      claimName: my-nop-pvc
+  #      readOnly: false
+  #    name: mysql
         
